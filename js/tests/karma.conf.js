@@ -134,7 +134,6 @@ if (LAMBDATEST) {
       browsers.lambdaTest[key].accessKey = ENV.LT_ACCESS_KEY
       browsers.lambdaTest[key].tunnel = true
       browsers.lambdaTest[key].console = true
-      browsers.lambdaTest[key].network = true
       browsers.lambdaTest[key].tunnelName = ENV.LT_TUNNEL_NAME || 'jasmine'
       browsers.lambdaTest[key].pseudoActivityInterval = 5000 // 5000 ms heartbeat
     } else {
@@ -143,7 +142,6 @@ if (LAMBDATEST) {
       browsers.lambdaTest[key]['LT:Options'].accessKey = ENV.LT_ACCESS_KEY
       browsers.lambdaTest[key]['LT:Options'].tunnel = true
       browsers.lambdaTest[key]['LT:Options'].console = true
-      browsers.lambdaTest[key]['LT:Options'].network = true
       browsers.lambdaTest[key]['LT:Options'].tunnelName = ENV.LT_TUNNEL_NAME || 'jasmine'
       browsers.lambdaTest[key]['LT:Options'].pseudoActivityInterval = 5000 // 5000 ms heartbeat
     }
