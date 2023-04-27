@@ -43,5 +43,5 @@ jobs:
         env:
           LT_USERNAME: "${{ secrets.LT_USERNAME }}"
           LT_ACCESS_KEY: "${{ secrets.LT_ACCESS_KEY }}"
-          LT_TUNNEL_NAME: "tunnel-${{ github.sha }}-$(date +'%Y-%m-%dT%H:%M:%S%z')"
+          LT_TUNNEL_NAME: "tunnel-${{ github.sha }}-${{ format(now(), 'yyyy-MM-ddTHH:mm:ss') }}"
           GITHUB_SHA: "${{ github.sha }}"
