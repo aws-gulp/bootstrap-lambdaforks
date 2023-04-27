@@ -73,7 +73,7 @@ const config = {
   retryLimit: 2,
   concurrency: 5,
   client: {
-    clearContext: true,
+    clearContext: false,
     jasmine: {
       timeoutInterval: 180_000,
       failFast: true,
@@ -85,7 +85,7 @@ const config = {
       pattern: 'js/tests/unit/**/!(jquery).spec.js',
       watched: !BROWSERSTACK && !LAMBDATEST
     }
-  ], nocache: true,
+  ],
   preprocessors: {
     'js/tests/unit/**/*.spec.js': ['rollup']
   },
