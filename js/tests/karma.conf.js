@@ -85,7 +85,7 @@ const config = {
       pattern: 'js/tests/unit/**/!(jquery).spec.js',
       watched: !BROWSERSTACK && !LAMBDATEST
     }
-  ], nocache: true,
+  ],
   preprocessors: {
     'js/tests/unit/**/*.spec.js': ['rollup']
   },
