@@ -73,7 +73,7 @@ const config = {
   retryLimit: 2,
   concurrency: 5,
   client: {
-    clearContext: true,
+    clearContext: false,
     jasmine: {
       timeoutInterval: 180_000,
       failFast: true,
