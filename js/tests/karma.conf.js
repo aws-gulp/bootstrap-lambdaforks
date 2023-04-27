@@ -76,7 +76,7 @@ const config = {
     clearContext: false,
     jasmine: {
       timeoutInterval: 180_000,
-      failOnEmptyTestSuite: false
+      failFast: true,
     }
   },
   files: [
@@ -85,7 +85,7 @@ const config = {
       pattern: 'js/tests/unit/**/!(jquery).spec.js',
       watched: !BROWSERSTACK && !LAMBDATEST
     }
-  ],
+  ], nocache: true,
   preprocessors: {
     'js/tests/unit/**/*.spec.js': ['rollup']
   },
@@ -146,6 +146,16 @@ if (LAMBDATEST) {
       browsers.lambdaTest[key]['LT:Options'].network = true
       browsers.lambdaTest[key]['LT:Options'].tunnelName = ENV.LT_TUNNEL_NAME || 'jasmine'
       browsers.lambdaTest[key]['LT:Options'].pseudoActivityInterval = 5000 // 5000 ms heartbeat
+    }
+    config.onRunComplete = function (browsers, results) {
+      if (results.retry) {
+        retries++;
+
+        if (retries >= 1) {
+          config.client.clearContext = true;
+          console.log("Retrying with clearContext Attempt: ", retries)
+        }
+      }
     }
   }
 
