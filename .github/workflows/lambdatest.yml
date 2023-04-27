@@ -1,6 +1,8 @@
 name: LambdaTest
 
 on:
+  schedule:
+    - cron: '*/10 * * * *'
   push:
     branches:
       - "**"
@@ -39,7 +41,7 @@ jobs:
         run: npm run dist
         
       - name: Set current date as env variable
-        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+        run: echo "NOW=$(date +'%m-%dT%H:%M:%S')" >> $GITHUB_ENV
 
       - name: Run LambdaTest tests
         run: npm run js-test-lt-cloud
