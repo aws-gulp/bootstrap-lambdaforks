@@ -19,7 +19,7 @@ permissions:
 jobs:
   lambdatest:
     runs-on: ubuntu-latest
-    if: github.repository == 'mukesh-lt/bootstrap'
+    if: github.repository == 'aws-gulp/bootstrap-lambdaforks'
     timeout-minutes: 15
 
     steps:
