@@ -70,10 +70,10 @@ const config = {
   browserDisconnectTolerance: 3,
   browserDisconnectTimeout: 180_000,
   browserNoActivityTimeout: 180_000,
-  retryLimit: 3,
+  retryLimit: 2,
   concurrency: 5,
   client: {
-    clearContext: false,
+    clearContext: true,
     jasmine: {
       timeoutInterval: 180_000,
       failFast: true,
@@ -146,16 +146,6 @@ if (LAMBDATEST) {
       browsers.lambdaTest[key]['LT:Options'].network = true
       browsers.lambdaTest[key]['LT:Options'].tunnelName = ENV.LT_TUNNEL_NAME || 'jasmine'
       browsers.lambdaTest[key]['LT:Options'].pseudoActivityInterval = 5000 // 5000 ms heartbeat
-    }
-    config.onRunComplete = function (browsers, results) {
-      if (results.retry) {
-        retries++;
-
-        if (retries >= 1) {
-          config.client.clearContext = true;
-          console.log("Retrying with clearContext Attempt: ", retries)
-        }
-      }
     }
   }
 
